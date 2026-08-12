@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Video Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen">
+            <div class="container">
+                <h1>Random Video Chat</h1>
+                <div class="login-form">
+                    <input type="text" id="username-input" placeholder="Enter your username" maxlength="20">
+                    <button id="login-btn">Start Chatting</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Waiting Screen -->
+        <div id="waiting-screen" class="screen hidden">
+            <div class="container">
+                <h2>Finding someone to chat with...</h2>
+                <div class="spinner"></div>
+                <p id="waiting-text">Please wait while we find a match for you</p>
+            </div>
+        </div>
+
+        <!-- Video Chat Screen -->
+        <div id="chat-screen" class="screen hidden">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="local-video" autoplay muted playsinline></video>
+                    <span class="video-label">You</span>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remote-video" autoplay playsinline></video>
+                    <span class="video-label" id="remote-label">Stranger</span>
+                </div>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Type a message..." maxlength="500">
+                    <button id="send-btn" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="skip-btn" class="btn btn-secondary">Skip</button>
+                <button id="stop-btn" class="btn btn-danger">Stop</button>
+            </div>
+            <div class="status" id="connection-status">Connecting...</div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
